@@ -52,8 +52,12 @@ class Home extends React.Component {
 							<Card size="l">
 								Вкусное длинное описание
 							</Card>
+
+							<Card size="l">
+								<div id="vk_auth"></div>
+							</Card>
 						</CardGrid>
-						<div id="vk_auth"></div>
+
 					</Panel>
 	}
 }
