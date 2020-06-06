@@ -1,0 +1,30 @@
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
+import React from 'react';
+import classNames from '../../lib/classNames';
+import getClassname from '../../helpers/getClassName';
+import usePlatform from '../../hooks/usePlatform';
+
+var Card = function Card(_ref) {
+  var size = _ref.size,
+      mode = _ref.mode,
+      children = _ref.children,
+      style = _ref.style,
+      className = _ref.className,
+      restProps = _objectWithoutProperties(_ref, ["size", "mode", "children", "style", "className"]);
+
+  var platform = usePlatform();
+  return /*#__PURE__*/React.createElement("div", _extends({}, restProps, {
+    style: style,
+    className: classNames(className, getClassname('Card', platform), "Card--sz-".concat(size), "Card--md-".concat(mode))
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "Card__in"
+  }, children));
+};
+
+Card.defaultProps = {
+  size: 'm',
+  mode: 'tint'
+};
+export default Card;
+//# sourceMappingURL=Card.js.map

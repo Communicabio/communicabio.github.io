@@ -1,0 +1,14 @@
+import { FunctionComponent, HTMLAttributes, ReactNode } from 'react';
+import { HasRootRef } from '../../types';
+export interface GroupProps extends HasRootRef<HTMLDivElement>, HTMLAttributes<HTMLDivElement> {
+    header?: ReactNode;
+    description?: ReactNode;
+    /**
+      show - разделитель всегда показывается,
+      hide – разделитель всегда спрятан,
+      auto – разделитель рисуется автоматически между соседними группами.
+     */
+    separator?: 'show' | 'hide' | 'auto';
+}
+declare const Group: FunctionComponent<GroupProps>;
+export default Group;
