@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "homepage": "/build",
   "devDependencies": {
     "cross-env": "^5.2.1",
     "react-hot-loader": "^4.12.21",
