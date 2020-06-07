@@ -1,6 +1,0 @@
-node_modules/
-dist/
-styleguide/
-docs/
-*.test.js
-src/vkui.js
