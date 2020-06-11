@@ -1,0 +1,39 @@
+{
+  "name": "communicabio-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "/app",
+  "scripts": {
+    "start": "cross-env PORT=10888 react-scripts start",
+    "build": "react-scripts build && rm -r app/ && mv build app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "react-hot-loader": "^4.12.21",
+    "react-scripts": "^2.1.8"
+  },
+  "dependencies": {
+    "@vkontakte/icons": "^1.21.0",
+    "@vkontakte/vk-bridge": "^2.2.2",
+    "@vkontakte/vkui": "^3.9.4",
+    "@vkontakte/vkui-connect": "^1.5.4",
+    "babel-eslint": "^9.0.0",
+    "core-js": "^2.5.7",
+    "crypto": "^1.0.1",
+    "eruda": "^2.3.3",
+    "prop-types": "^15.7.2",
+    "querystring": "^0.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
