@@ -9,7 +9,7 @@
     "build": "react-scripts build && rm -r app/ && mv build app"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Ishutin",
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^5.2.1",
