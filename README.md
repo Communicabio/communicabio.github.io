@@ -1,5 +1,5 @@
 # Communicabio
-Communicabio is our solution for [Metachallenge](https://practicingfutures.org/meta). First intended to be Vk Mini App. Unfortunately, we did not pass the review.
+This is our solution for [Metachallenge](https://practicingfutures.org/meta). First intended to be Vk Mini App. Unfortunately, we did not pass the review.
 
 Communicabio is the chatbot for practicing negotiation skills. Dialogs are available in Russian and English, however, UI is only in Russian.
 
