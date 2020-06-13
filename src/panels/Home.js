@@ -125,7 +125,7 @@ class Home extends React.Component {
 		}
 		var json = await response.json();
 		console.log('get_score ' + json)
-		return json['metrics'];
+		return json;
 	}
 
 	async get_reply_to(msg) {
@@ -270,7 +270,7 @@ class Home extends React.Component {
 		this.setState({popout: "feedback", tooltip: 0});
 	}
 
-	create_alert(scores) {
+	create_alert(scores, dialog_id) {
 		console.log("dialog scores");
 		console.log(scores);
 		if (scores[0]['score'] < 0) {
@@ -282,6 +282,7 @@ class Home extends React.Component {
 									}
 							 </p>
 		}
+
 		this.scores = scores;
 		var alert_element = (<Alert id="end-of-dialog-alert" actionsLayout="vertical"
 															 actions={[
@@ -297,6 +298,11 @@ class Home extends React.Component {
 													<h2>Завершение диалога</h2>
 													{text}
 												</Alert>);
+		const script = document.createElement("script");
+
+    script.text = 'VK.Share.button({url: "https://communicabio.github.io/share?dialog="' + dialog_id + '},{type: "round_nocount", text: "Поделиться диалогом"})};';
+    script.async = true;
+    alert_element.appendChild(script);
 		this.setState({popout: alert_element});
 	}
 
@@ -310,9 +316,11 @@ class Home extends React.Component {
 				return;
 			}
 			console.log(response);
+			var dialog_id = response['dialog']
+			response = response['metrics']
 			var dict = [{'metric': 'вежливость', 'score': (2 + 3 * response['politeness']['score']).toFixed(2), 'mistakes': response['politeness']['mistakes']},
 									{'metric': 'позитивность', 'score': (2  + 3 * response['positivity']['score']).toFixed(2), 'mistakes': response['positivity']['mistakes']}];
-			this.create_alert(dict);
+			this.create_alert(dict, dialog_id);
 		});
 	}
 
