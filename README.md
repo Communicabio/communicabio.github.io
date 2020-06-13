@@ -1,7 +1,7 @@
 # Communicabio
-Communicabio is our solution for [Metachallenge](https://practicingfutures.org/meta). First intended to be Vk Mini App. Unfortuently we did not pass review.
+This is our solution for [Metachallenge](https://practicingfutures.org/meta). First intended to be Vk Mini App. Unfortunately, we did not pass the review.
 
-Communicabio is chatbot for practicing negotiation skill. Dialogs are available in Russian and English, however, UI is only in Russian.
+Communicabio is the chatbot for practicing negotiation skills. Dialogs are available in Russian and English, however, UI is only in Russian.
 
 **Please view our [landing page](communicabio.github.io) and other repos for additional information!**
 
@@ -15,7 +15,7 @@ Communicabio is chatbot for practicing negotiation skill. Dialogs are available 
 
 ## Tech features
 
-- autoscalable serverless backend
+- auto-scalable serverless backend
 - GPT-2 for replying
 - BERT for scoring
 - adaptive web-design
