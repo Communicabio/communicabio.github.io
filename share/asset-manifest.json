@@ -1,13 +1,13 @@
 {
-  "main.js": "/share/static/js/main.5984580c.chunk.js",
-  "main.js.map": "/share/static/js/main.5984580c.chunk.js.map",
+  "main.js": "/share/static/js/main.e37ee5e5.chunk.js",
+  "main.js.map": "/share/static/js/main.e37ee5e5.chunk.js.map",
   "runtime~main.js": "/share/static/js/runtime~main.a9633473.js",
   "runtime~main.js.map": "/share/static/js/runtime~main.a9633473.js.map",
   "static/css/2.548d1aff.chunk.css": "/share/static/css/2.548d1aff.chunk.css",
-  "static/js/2.90206ca2.chunk.js": "/share/static/js/2.90206ca2.chunk.js",
-  "static/js/2.90206ca2.chunk.js.map": "/share/static/js/2.90206ca2.chunk.js.map",
+  "static/js/2.a125d172.chunk.js": "/share/static/js/2.a125d172.chunk.js",
+  "static/js/2.a125d172.chunk.js.map": "/share/static/js/2.a125d172.chunk.js.map",
   "index.html": "/share/index.html",
-  "precache-manifest.a63f755730368979ea9a264a32f36954.js": "/share/precache-manifest.a63f755730368979ea9a264a32f36954.js",
+  "precache-manifest.d96fba9efa8b15876dd411d6c0e43580.js": "/share/precache-manifest.d96fba9efa8b15876dd411d6c0e43580.js",
   "service-worker.js": "/share/service-worker.js",
   "static/css/2.548d1aff.chunk.css.map": "/share/static/css/2.548d1aff.chunk.css.map",
   "static/media/communicabio.svg": "/share/static/media/communicabio.e8edc935.svg"
