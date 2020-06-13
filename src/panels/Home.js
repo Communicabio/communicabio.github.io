@@ -24,6 +24,7 @@ import ReactDOM from 'react-dom'
 import {FixedLayout} from '@vkontakte/vkui'
 import { Tooltip} from '@vkontakte/vkui';
 import { PanelSpinner, ScreenSpinner, Spinner } from '@vkontakte/vkui';
+import { useRef, useEffect} from "react"
 
 var node_before_alert = null;
 
@@ -35,6 +36,58 @@ class Example extends React.Component {
 	render() {
 		return <p>some text</p>
 	}
+}
+
+class EndOfDialog extends React.Component {
+	constructor(props) {
+		super();
+		this.props = props;
+		this.instance = React.createRef()
+	}
+
+	componentDidMount() {
+		const script = document.createElement("script"); // document.getElementById("vk-share").appendChild
+		var vk_table = 'VK.Share.button({url: "https://communicabio.github.io/share?dialog=' + this.props.dialog_id + '"},{type: "round_nocount", text: "Поделиться диалогом"});';
+		var run = "var htmlobj = document.createElement('div'); htmlobj.innerHTML = " + vk_table + ";console.log(htmlobj);document.getElementById('vk-share').appendChild(htmlobj);"
+		script.text = run
+		script.async = true;
+		console.log(this.instance);
+		console.log(this.instance.current);
+		this.instance.current.appendChild(script);
+	}
+
+	render() {
+		//const instance = useRef(null);
+		var scores = this.props.scores;
+		console.log("dialog scores");
+		console.log(scores);
+		if (scores[0]['score'] < 0) {
+				text = <p>К сожалению, у нас пока нет нормальных критериев оценки на английском. Через пару дней все изменится</p>
+		} else {
+			var text = <p>
+									{
+										scores.map(element => <p>Ваши баллы за {element['metric']}: {element['score']}<br/></p>)
+									}
+							 </p>
+		}
+
+		return (<Alert id="end-of-dialog-alert" actionsLayout="vertical"
+															 actions={[
+															 {
+																 title: 'Продолжить',
+																 autoclose: true,
+																 mode: 'default',
+																 action: () => {},
+															 },
+														 	]}
+															 	onClose={() => {}}>
+
+													<h2>Завершение диалога</h2>
+													{text}
+													<div ref={this.instance}></div>
+													<div id="vk-share"/>
+												</Alert>);
+	} // this.props.create_feedback_panel
 }
 
 class Home extends React.Component {
@@ -273,36 +326,8 @@ class Home extends React.Component {
 	create_alert(scores, dialog_id) {
 		console.log("dialog scores");
 		console.log(scores);
-		if (scores[0]['score'] < 0) {
-				text = <p>К сожалению, у нас пока нет нормальных критериев оценки на английском. Через пару дней все изменится</p>
-		} else {
-			var text = <p>
-									{
-										scores.map(element => <p>Ваши баллы за {element['metric']}: {element['score']}<br/></p>)
-									}
-							 </p>
-		}
-
 		this.scores = scores;
-		var alert_element = (<Alert id="end-of-dialog-alert" actionsLayout="vertical"
-															 actions={[
-															 {
-																 title: 'Продолжить',
-																 autoclose: true,
-																 mode: 'default',
-																 action: () => {},
-															 },
-														 	]}
-															 	onClose={() => this.create_feedback_panel()}>
-
-													<h2>Завершение диалога</h2>
-													{text}
-												</Alert>);
-		const script = document.createElement("script");
-
-    script.text = 'VK.Share.button({url: "https://communicabio.github.io/share?dialog="' + dialog_id + '},{type: "round_nocount", text: "Поделиться диалогом"})};';
-    script.async = true;
-    alert_element.appendChild(script);
+		var alert_element = <EndOfDialog scores={scores} dialog_id={dialog_id}/> //  create_feedback_panel={this.create_feedback_panel}
 		this.setState({popout: alert_element});
 	}
 
@@ -379,21 +404,12 @@ class Home extends React.Component {
 	chatRender() {
 		return <Panel id={this.props.id}>
 			<PanelHeader>Чат</PanelHeader>
-			{/*{fetchedUser &&
-			<Group title="User Data Fetched with VK Bridge">
-				<Cell
-					before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
-					description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
-				>
-					{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-				</Cell>/* Chat containers </Group>}*/}
 			<Div id="chat-parent">
 					{this.state['history'].map(message =>
 						<Card mode={{0: "shadow", 1: "tint"}[message['actor']]} size='l'>
 							{this.message2Cell(message)}
 						 </Card>
 					)}
-					{/*renderMessages(this.state['history'], this.state['hints'])*/}
 
 
 			</Div>
@@ -438,19 +454,5 @@ class Home extends React.Component {
 		}
 	}
 }
-
-/*Home.propTypes = {
-	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
-	fetchedUser: PropTypes.shape({
-		photo_200: PropTypes.string,
-		first_name: PropTypes.string,
-		last_name: PropTypes.string,
-		city: PropTypes.shape({
-			title: PropTypes.string,
-		}),
-	}),
-	token: PropTypes.string.isRequired
-};*/
 
 export default Home;
