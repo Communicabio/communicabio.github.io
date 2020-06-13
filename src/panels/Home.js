@@ -80,14 +80,14 @@ class EndOfDialog extends React.Component {
 																 action: () => {},
 															 },
 														 	]}
-															 	onClose={() => {}}>
+															 	onClose={() => this.props.create_feedback_panel()}>
 
 													<h2>Завершение диалога</h2>
 													{text}
 													<div ref={this.instance}></div>
 													<div id="vk-share"/>
 												</Alert>);
-	} // this.props.create_feedback_panel
+	} //
 }
 
 class Home extends React.Component {
@@ -327,7 +327,7 @@ class Home extends React.Component {
 		console.log("dialog scores");
 		console.log(scores);
 		this.scores = scores;
-		var alert_element = <EndOfDialog scores={scores} dialog_id={dialog_id}/> //  create_feedback_panel={this.create_feedback_panel}
+		var alert_element = <EndOfDialog scores={scores} dialog_id={dialog_id} create_feedback_panel={this.create_feedback_panel}/> //  
 		this.setState({popout: alert_element});
 	}
 
