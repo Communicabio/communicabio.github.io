@@ -80,7 +80,7 @@ class EndOfDialog extends React.Component {
 																 action: () => {},
 															 },
 														 	]}
-															 	onClose={() => {console.log('create_feedback_panel33'); this.props.create_feedback_panel()}}>
+															onClose={() => {console.log('create_feedback_panel33'); this.props.create_feedback_panel()}}>
 
 													<h2>Завершение диалога</h2>
 													{text}
