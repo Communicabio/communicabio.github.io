@@ -114,6 +114,7 @@ class Home extends React.Component {
 		 this.closeTooltip = this.closeTooltip.bind(this);
 		 this.create_feedback_panel = this.create_feedback_panel.bind(this);
 		 this.renderFeedbackPanel = this.renderFeedbackPanel.bind(this);
+		 this.renderScorePanel = this.renderScorePanel.bind(this);
 
 	 	 this.get_chat_history().then(history => {
 			 if (history.length == 0) {
@@ -281,7 +282,10 @@ class Home extends React.Component {
 									 <Button size="xl" mode="secondary" onClick={() => this.remove_alert(1)}>Все понятно</Button>
 								</FixedLayout>
 					</Panel>
+	}
 
+	renderScorePanel() {
+		return <EndOfDialog scores={this.state.scores} dialog_id={this.state.dialog_id} create_feedback_panel={this.create_feedback_panel}/>
 	}
 
 	create_feedback_panel() {
@@ -327,8 +331,7 @@ class Home extends React.Component {
 		console.log("dialog scores");
 		console.log(scores);
 		this.scores = scores;
-		var alert_element = <EndOfDialog scores={scores} dialog_id={dialog_id} create_feedback_panel={this.create_feedback_panel}/> //
-		this.setState({popout: alert_element});
+		this.setState({popout: "scorepanel", scores: scores, dialog_id: dialog_id});
 	}
 
  	async prepare_alert() {
@@ -449,6 +452,9 @@ class Home extends React.Component {
 			}
 			if (this.state.popout === "loading") {
 				return this.loadigRender();
+			}
+			if (this.state.popout === "scorepanel") {
+				return this.renderScorePanel();
 			}
 			return this.state.popout;
 		}
