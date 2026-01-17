@@ -14,7 +14,7 @@
   "devDependencies": {
     "cross-env": "^5.2.1",
     "react-hot-loader": "^4.12.21",
-    "react-scripts": "^2.1.8"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "@vkontakte/icons": "^1.21.0",
